@@ -1,3 +1,5 @@
+import getOwner from 'ember-getowner-polyfill';
+
 var get = Ember.get;
 
 var routeProps = {
@@ -77,7 +79,7 @@ Ember.Router.reopen({
   }),
 
   setTitle: function(title) {
-    var renderer = this.container.lookup('renderer:-dom');
+    var renderer = getOwner(this).lookup('renderer:-dom');
 
     if (renderer) {
       Ember.set(renderer, '_dom.document.title', title);
